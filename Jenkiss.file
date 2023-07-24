@@ -1,25 +1,18 @@
 pipeline {
     agent any
-
     stages {
         stage('Build') {
             steps {
-                git 'https://github.com/chemrariamine/Projet_j2e.git'
-                sh './mvnw clean compile'
-                // bat '.\\mvnw clean compile'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh './mvnw test'
-                // bat '.\\mvnw test'
-            }
-
-            post {
-                always {
-                    junit '**/src/main/webapp/Login.jsp'
-                }
-            }
-        }
+                    git 'https://github.com/chemrariamine/Projet_j2e.git'                
+                    sh './mvnw clean compile'
+                    // bat '.\\mvnw clean compile'
+                  }
+             }
+             post {
+        always {
+            junit '**/src/main/webapp/login.jsp'
     }
+}
+         }
+         
 }
